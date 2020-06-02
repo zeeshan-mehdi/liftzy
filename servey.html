@@ -1,0 +1,207 @@
+<style>
+   
+
+    h2 {
+        margin: 5px 0;
+    }
+
+    #wrapper {
+        width: 600px;
+        margin: 0 auto;
+        background: white;
+        padding: 10px 15px;
+        border-radius: 10px;
+    }
+
+    input {
+        margin: 5px 10px;
+    }
+
+    button {
+        font-size: 18px;
+        padding: 10px;
+        margin: 20px 0;
+        color: white;
+        border: 0;
+        border-radius: 10px;
+        border-bottom: 3px solid #333;
+    }
+
+    #submit {
+        background: green;
+    }
+
+    #reset {
+        background: red;
+    }
+
+    #answer {
+        border: 1px dashed #ccc;
+        background: #eee;
+        padding: 10px;
+    }
+</style>
+
+
+<link rel="stylesheet" href="css/main.css"/>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/2.1.2/sweetalert.min.js"></script>
+<div id="wrapper">
+    <h1>Liftzy Servey</h1>
+
+    <br>
+
+    <div id="quiz">
+        <!-- Question 1 -->
+        <!-- Here are the choices for the first question. Each input tag must have the same name. For this question, the name is q1. -->
+        <!-- The value is which answer the choice corresponds to. -->
+
+
+        <!-- Question 2 -->
+        <h2>How much amount of money are you
+            willing to pay with respect to distance (per km) if you are travelling intercity?</h2>
+            <br>
+        <!-- Here are the choices for the second question. Notice how each input tag has the same name (q2), but a different name than the previous question. -->
+        <label><input type="radio" name="q1" value="c1">
+            Rs 7
+        </label><br />
+        <label><input type="radio" name="q1" value="c2">
+            Rs 9
+        </label><br />
+        <label><input type="radio" name="q1" value="c3">
+            Rs 11
+        </label><br />
+        <label><input type="radio" name="q1" value="c4">
+            Rs 13
+        </label><br />
+
+        <!-- Question 3 -->
+        <h2>How much amount of money are you
+            willing to pay with respect to distance (per km) if you are travelling intracity?</h2>
+            <br>
+        <!-- Choices for the third question -->
+        <label><input type="radio" name="q2" value="c1">
+            Rs 3
+        </label><br />
+        <label><input type="radio" name="q2" value="c2">
+            Rs 5
+        </label><br />
+        <label><input type="radio" name="q2" value="c3">
+            RS 7
+        </label><br />
+        <label><input type="radio" name="q2" value="c4">
+            RS 9
+        </label><br />
+
+        <!-- Question 4 -->
+        <h2>Which payment module are you
+            willing to use in terms of carpooling?</h2>
+            <br>
+        <!-- Choices for the fourth question -->
+        <label><input type="radio" name="q3" value="c1">
+            Subscription Policy
+        </label><br />
+        <label><input type="radio" name="q3" value="c2">
+            Pay as you go
+        </label><br />
+        <label><input type="radio" name="q3" value="c3">
+            Post Paid policy
+        </label><br />
+
+        <button type="submit"  class="primary-btn text-uppercase" id="submit" onclick="tabulateAnswers()">Submit Your Answers</button>
+    </div>
+
+</div>
+
+<script src="https://www.gstatic.com/firebasejs/5.9.4/firebase.js"></script>
+<!-- The core Firebase JS SDK is always required and must be listed first -->
+<script src="https://www.gstatic.com/firebasejs/7.3.0/firebase-app.js"></script>
+
+<!-- TODO: Add SDKs for Firebase products that you want to use
+     https://firebase.google.com/docs/web/setup#available-libraries -->
+<script src="https://www.gstatic.com/firebasejs/7.3.0/firebase-analytics.js"></script>
+
+<!-- Add Firebase products that you want to use -->
+<script src="https://www.gstatic.com/firebasejs/6.1.1/firebase-auth.js"></script>
+
+<script src="https://www.gstatic.com/firebasejs/6.1.1/firebase-database.js"></script>
+
+
+<script>
+  // Your web app's Firebase configuration
+  var firebaseConfig = {
+    apiKey: "AIzaSyCqH0cFwIvkf0AuKpXhJKR1ysxIeLt7vRw",
+    authDomain: "survey-7bece.firebaseapp.com",
+    databaseURL: "https://survey-7bece.firebaseio.com",
+    projectId: "survey-7bece",
+    storageBucket: "survey-7bece.appspot.com",
+    messagingSenderId: "652167727041",
+    appId: "1:652167727041:web:df6a0c7997ba6cdc665140",
+    measurementId: "G-DB7FZ267K4"
+  };
+  // Initialize Firebase
+  firebase.initializeApp(firebaseConfig);
+  firebase.analytics();
+</script>
+<script>
+    var database = firebase.database();
+    var result = [0,0,0];
+    var answers=[['Rs 7','Rs 9','Rs 11','Rs 13'],['Rs 3','Rs 5','Rs 7','Rs 9'],['Subscription Policy'],['Pay as you go'],['Post Paid policy']];
+    function tabulateAnswers() {
+        // initialize variables for each choice's score
+        // If you add more choices and outcomes, you must add another variable here.
+      
+
+      // get a list of the radio inputs on the page
+        var choices = document.getElementsByTagName('input');
+        let index = 0;
+        // loop through all the radio inputs
+        for (i = 0; i < choices.length; i++) {
+            // if the radio is checked..
+            if (choices[i].checked) {
+                // add 1 to that choice's score
+                if (choices[i].value == 'c1') {
+                    result[index]=0;
+                    index++;
+                }
+                if (choices[i].value == 'c2') {
+                    result[index]=1;
+                    index++;
+                }
+                if (choices[i].value == 'c3') {
+                    result[index]=2;
+                    index++;
+                }
+                if (choices[i].value == 'c4') {
+                    result[index]=3;
+                    index++;
+                }
+                // If you add more choices and outcomes, you must add another if statement below.
+            }
+
+        }
+
+     let r = ['N','N','N'];
+     for(let i=0;i<result.length;i++){
+         r[i]=(answers[i][result[i]]);
+     }
+
+
+     database.ref('servey').push({
+         'q1':r[0],
+         'q2':r[1],
+         'q3':r[2]
+     }).then(
+        swal('Servey Submitted','Thank You very much for taking this servey!!',
+            ).then((value) => {
+                setTimeout(function(){
+                    window.location.replace("index.html");
+                }, 1000)
+            })
+     );
+     
+     
+
+    }
+
+   
+</script>
