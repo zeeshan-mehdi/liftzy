@@ -14,9 +14,13 @@
     }
 
     input {
-        margin: 5px 10px;
+        margin: 15px 10px;
     }
 
+    label{
+        font-size: x-large;
+        margin-top: 50px;
+    }
     button {
         font-size: 18px;
         padding: 10px;
@@ -40,6 +44,71 @@
         background: #eee;
         padding: 10px;
     }
+
+    .container {
+  display: block;
+  position: relative;
+  padding-left: 35px;
+  margin-bottom: 12px;
+  cursor: pointer;
+  font-size: 22px;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+/* Hide the browser's default radio button */
+.container input {
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+  height: 0;
+  width: 0;
+}
+
+/* Create a custom radio button */
+.checkmark {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 25px;
+  width: 25px;
+  background-color: #eee;
+  border-radius: 50%;
+}
+
+/* On mouse-over, add a grey background color */
+.container:hover input ~ .checkmark {
+  background-color: #ccc;
+}
+
+/* When the radio button is checked, add a blue background */
+.container input:checked ~ .checkmark {
+  background-color: #2196F3;
+}
+
+/* Create the indicator (the dot/circle - hidden when not checked) */
+.checkmark:after {
+  content: "";
+  position: absolute;
+  display: none;
+}
+
+/* Show the indicator (dot/circle) when checked */
+.container input:checked ~ .checkmark:after {
+  display: block;
+}
+
+/* Style the indicator (dot/circle) */
+.container .checkmark:after {
+  top: 9px;
+  left: 9px;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: white;
+}
 </style>
 
 
@@ -61,17 +130,33 @@
             willing to pay with respect to distance (per km) if you are travelling intercity?</h2>
             <br>
         <!-- Here are the choices for the second question. Notice how each input tag has the same name (q2), but a different name than the previous question. -->
-        <label><input type="radio" name="q1" value="c1">
+        <label>
+            <div class="container">
+            <input type="radio" name="q1" value="c1">
             Rs 7
+            <span class="checkmark"></span>
+        </div>
         </label><br />
-        <label><input type="radio" name="q1" value="c2">
+        <label>
+            <div class="container">
+            <input type="radio" name="q1" value="c2">
             Rs 9
+            <span class="checkmark"></span>
+        </div>
         </label><br />
-        <label><input type="radio" name="q1" value="c3">
+        <label>
+            <div class="container">
+            <input type="radio" name="q1" value="c3">
             Rs 11
+            <span class="checkmark"></span>
+        </div>
         </label><br />
-        <label><input type="radio" name="q1" value="c4">
+        <label>
+            <div class="container">
+            <input type="radio" name="q1" value="c4">
             Rs 13
+            <span class="checkmark"></span>
+        </div>
         </label><br />
 
         <!-- Question 3 -->
@@ -79,17 +164,30 @@
             willing to pay with respect to distance (per km) if you are travelling intracity?</h2>
             <br>
         <!-- Choices for the third question -->
-        <label><input type="radio" name="q2" value="c1">
-            Rs 3
+        <label>
+            <div class="container">
+            <input type="radio" name="q2" value="c1">
+            Rs 3<span class="checkmark"></span>
+        </div>
         </label><br />
-        <label><input type="radio" name="q2" value="c2">
-            Rs 5
+        <label>
+            <div class="container">
+            <input type="radio" name="q2" value="c2">
+            Rs 5<span class="checkmark"></span>
+        </div>
+
         </label><br />
-        <label><input type="radio" name="q2" value="c3">
-            RS 7
+        <label>
+            <div class="container">
+            <input type="radio" name="q2" value="c3">
+            RS 7<span class="checkmark"></span>
+        </div>
         </label><br />
-        <label><input type="radio" name="q2" value="c4">
-            RS 9
+        <label>
+            <div class="container">
+            <input type="radio" name="q2" value="c4">
+            RS 9<span class="checkmark"></span>
+        </div>
         </label><br />
 
         <!-- Question 4 -->
@@ -97,14 +195,23 @@
             willing to use in terms of carpooling?</h2>
             <br>
         <!-- Choices for the fourth question -->
-        <label><input type="radio" name="q3" value="c1">
-            Subscription Policy
+        <label>
+            <div class="container">
+            <input type="radio" name="q3" value="c1">
+            Subscription Policy<span class="checkmark"></span>
+        </div>
         </label><br />
-        <label><input type="radio" name="q3" value="c2">
-            Pay as you go
+        <label>
+            <div class="container">
+            <input type="radio" name="q3" value="c2">
+            Pay as you go<span class="checkmark"></span>
+        </div>
         </label><br />
-        <label><input type="radio" name="q3" value="c3">
-            Post Paid policy
+        <label>
+            <div class="container">
+            <input type="radio" name="q3" value="c3">
+            Post Paid policy<span class="checkmark"></span>
+        </div>
         </label><br />
 
         <button type="submit"  class="primary-btn text-uppercase" id="submit" onclick="tabulateAnswers()">Submit Your Answers</button>
