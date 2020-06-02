@@ -252,7 +252,7 @@
 <script>
     var database = firebase.database();
     var result = [0,0,0];
-    var answers=[['Rs 7','Rs 9','Rs 11','Rs 13'],['Rs 3','Rs 5','Rs 7','Rs 9'],['Subscription Policy'],['Pay as you go'],['Post Paid policy']];
+    var answers=[['Rs 7','Rs 9','Rs 11','Rs 13'],['Rs 3','Rs 5','Rs 7','Rs 9'],['Subscription Policy','Pay as you go','Post Paid policy']];
     function tabulateAnswers() {
         // initialize variables for each choice's score
         // If you add more choices and outcomes, you must add another variable here.
@@ -289,9 +289,7 @@
 
      let r = ['N','N','N'];
      for(let i=0;i<result.length;i++){
-         if(i==2)
-         r[i]=(answers[i][result[i-1]]);
-         else r[i]=(answers[i][result[i]]);
+         r[i]=(answers[i][result[i]]);
      }
 
 
