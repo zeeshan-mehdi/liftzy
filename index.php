@@ -1,6 +1,4 @@
-<?php 
-
-		<!DOCTYPE html>
+	<!DOCTYPE html>
 	<html lang="zxx" class="no-js">
 	<head>
 		<!-- Mobile Specific Meta -->
@@ -472,5 +470,3 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> Liftz
 			<script src="js/main.js"></script>	
 		</body>
 	</html>
-
- ?>
