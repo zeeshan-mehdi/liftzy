@@ -289,10 +289,13 @@
 
      let r = ['N','N','N'];
      for(let i=0;i<result.length;i++){
-         r[i]=(answers[i][result[i]]);
+         if(i==2)
+         r[i]=(answers[i][result[i-1]]);
+         else r[i]=(answers[i][result[i]]);
      }
 
 
+     console.log(r);
      database.ref('servey').push({
          'q1':r[0],
          'q2':r[1],
