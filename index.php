@@ -75,7 +75,7 @@
 							<p class="pt-10 pb-10 text-white">
 								Liftzy is ride sharing platform where as a captain you can share your ride with others to minimize your ride cost and People can take lyft at very minimal cost
 							</p>
-							<a href="servey.html" class="primary-btn text-uppercase">Take Servey</a>
+							<a href="survey.html" class="primary-btn text-uppercase">Take Survey</a>
 						</div>
 						<!-- <div class="col-lg-4  col-md-6 header-right">
 							<h4 class="pb-30">Book Your Texi Online!</h4>
@@ -173,9 +173,9 @@
 							<h1>Connected in all over pakistan
 							by Large Network</h1>
 							<h4>To Provide better services Lyftzy Need Your help</h4>
-							<p>You can help us by filling out a simple servey, which will help us better understand your needs and to serve you in a better way								
+							<p>You can help us by filling out a simple survey, which will help us better understand your needs and to serve you in a better way								
 							</p>
-							<a class="text-uppercase primary-btn" href="servey.html">Take Servey</a>
+							<a class="text-uppercase primary-btn" href="survey.html">Take Survey</a>
 						</div>
 					</div>
 				</div>	
